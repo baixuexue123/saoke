@@ -24,6 +24,7 @@ class WxSignature(tornado.web.RequestHandler):
     check_signature: 校验signature是否正确
     """
 
+    @gen.coroutine
     def get(self):
         signature = self.get_argument('signature')
         timestamp = self.get_argument('timestamp')
@@ -40,7 +41,7 @@ class WxSignature(tornado.web.RequestHandler):
 
     def check_signature(self, signature, timestamp, nonce):
         """校验token是否正确"""
-        token = 'pysaoke'
+        token = 'pysaoke123'
         L = [timestamp, nonce, token]
         L.sort()
         s = L[0] + L[1] + L[2]
